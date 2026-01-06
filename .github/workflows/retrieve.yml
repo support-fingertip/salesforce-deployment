@@ -1,0 +1,60 @@
+name: Retrieve from Salesforce
+
+on:
+  workflow_dispatch:
+
+jobs:
+  retrieve:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Install Salesforce CLI
+        run: |
+          npm install --global @salesforce/cli
+          sf --version
+      
+      - name: Authenticate to Salesforce
+        run: |
+          echo "${{ secrets.SALESFORCE_AUTH_URL }}" > authfile.txt
+          sf org login sfdx-url --sfdx-url-file authfile.txt --alias deployment-org --set-default
+      
+      - name: Retrieve from Salesforce
+        run: |
+          sf project retrieve start --manifest manifest/package.xml --target-org deployment-org
+      
+      - name: Commit changes to GitHub
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git diff --quiet && git diff --staged --quiet || git commit -m "Retrieved changes from Salesforce"
+          git push
+```
+
+### **6. Commit the file**
+
+---
+
+## **How to Use Retrieve Workflow:**
+
+1. **Make changes in Salesforce** (create a class, modify metadata, etc.)
+2. **Go to Actions tab** on GitHub
+3. **Click "Retrieve from Salesforce"** (left sidebar)
+4. **Click "Run workflow"** dropdown → **"Run workflow"** button
+5. **Watch it pull your changes** from Salesforce and commit to GitHub!
+
+---
+
+## **📚 What You've Built - Summary:**
+
+### **✅ Deployment Flow (Automatic):**
+```
+Local Computer → Git Push → GitHub → Deploys to Salesforce
+```
+
+### **✅ Retrieve Flow (Manual Button Click):**
+```
+Salesforce → GitHub Actions → Pulls Changes → Commits to GitHub
