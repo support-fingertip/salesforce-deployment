@@ -3,7 +3,7 @@ name: Retrieve from Salesforce
 on:
   workflow_dispatch:  # Keep manual trigger
   schedule:
-    - cron: '0 18 * * 1-5'  # Run at 6 PM Monday-Friday
+    - cron: '35 11 * * 1-5'
 
 jobs:
   retrieve:
