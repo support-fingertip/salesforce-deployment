@@ -5,5 +5,6 @@ trigger LeadTrigger on Lead__c (before insert) {
 //double test
 //tripple test
 //fourth est
+//test for gitbub
     }
 }
