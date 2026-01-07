@@ -1,7 +1,9 @@
 name: Retrieve from Salesforce
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Keep manual trigger
+  schedule:
+    - cron: '0 18 * * 1-5'  # Run at 6 PM Monday-Friday
 
 jobs:
   retrieve:
@@ -30,8 +32,8 @@ jobs:
       - name: Commit changes to GitHub
         run: |
           rm -f authfile.txt
-          git config user.name "GitHub Actions"
+          git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           git add .
-          git diff --quiet && git diff --staged --quiet || git commit -m "Retrieved changes from Salesforce [skip ci]"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Scheduled retrieval from Salesforce [skip ci]"
           git push
