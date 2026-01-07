@@ -4,5 +4,6 @@ trigger LeadTrigger on Lead__c (before insert) {
         //comment adding to test
 //double test
 //tripple test
+//fourth est
     }
 }
