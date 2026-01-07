@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Funding Type --></label>
+    <name>Funding_Type__c</name>
+    <picklistValues>
+        <masterLabel>Bank Loan</masterLabel>
+        <translation><!-- Bank Loan --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mixed Funding</masterLabel>
+        <translation><!-- Mixed Funding --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>NBFC Loan</masterLabel>
+        <translation><!-- NBFC Loan --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Self-Funded</masterLabel>
+        <translation><!-- Self-Funded --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

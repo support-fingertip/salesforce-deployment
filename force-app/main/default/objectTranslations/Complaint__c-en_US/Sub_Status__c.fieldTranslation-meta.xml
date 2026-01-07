@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Sub Status --></label>
+    <name>Sub_Status__c</name>
+    <picklistValues>
+        <masterLabel>Assigned to CRM Team</masterLabel>
+        <translation><!-- Assigned to CRM Team --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Awaiting Customer Response</masterLabel>
+        <translation><!-- Awaiting Customer Response --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Closed Successfully</masterLabel>
+        <translation><!-- Closed Successfully --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Issue Fixed</masterLabel>
+        <translation><!-- Issue Fixed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Reopened by Customer</masterLabel>
+        <translation><!-- Reopened by Customer --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

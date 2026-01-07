@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Payment Method --></label>
+    <name>Payment_Method__c</name>
+    <picklistValues>
+        <masterLabel>Bank Transfer (NEFT)</masterLabel>
+        <translation><!-- Bank Transfer (NEFT) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bank Transfer (RTGS)</masterLabel>
+        <translation><!-- Bank Transfer (RTGS) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cheque</masterLabel>
+        <translation><!-- Cheque --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Demand Draft</masterLabel>
+        <translation><!-- Demand Draft --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>UPI</masterLabel>
+        <translation><!-- UPI --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

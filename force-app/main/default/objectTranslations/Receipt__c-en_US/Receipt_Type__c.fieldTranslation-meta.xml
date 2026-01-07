@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Receipt Type --></label>
+    <name>Receipt_Type__c</name>
+    <picklistValues>
+        <masterLabel>Additional Charge</masterLabel>
+        <translation><!-- Additional Charge --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Advance Payment</masterLabel>
+        <translation><!-- Advance Payment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Installment Payment</masterLabel>
+        <translation><!-- Installment Payment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Interest Payment</masterLabel>
+        <translation><!-- Interest Payment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Penalty Payment</masterLabel>
+        <translation><!-- Penalty Payment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Refund Adjustment</masterLabel>
+        <translation><!-- Refund Adjustment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>TDS Payment</masterLabel>
+        <translation><!-- TDS Payment --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

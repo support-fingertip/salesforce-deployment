@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Debit Type --></label>
+    <name>Debit_Type__c</name>
+    <picklistValues>
+        <masterLabel>Additional Charges</masterLabel>
+        <translation><!-- Additional Charges --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Late Payment Interest</masterLabel>
+        <translation><!-- Late Payment Interest --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Legal</masterLabel>
+        <translation><!-- Legal --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Modification</masterLabel>
+        <translation><!-- Modification --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Penalty</masterLabel>
+        <translation><!-- Penalty --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

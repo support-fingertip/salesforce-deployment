@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Discount Type --></label>
+    <name>Discount_Type__c</name>
+    <picklistValues>
+        <masterLabel>Fixed Amount On Basic Price</masterLabel>
+        <translation><!-- Fixed Amount On Basic Price --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Percentage On Rate Per Sqft</masterLabel>
+        <translation><!-- Percentage On Rate Per Sqft --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Percentage on Basic Price</masterLabel>
+        <translation><!-- Percentage on Basic Price --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Value on Rate Per Sqft</masterLabel>
+        <translation><!-- Value on Rate Per Sqft --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

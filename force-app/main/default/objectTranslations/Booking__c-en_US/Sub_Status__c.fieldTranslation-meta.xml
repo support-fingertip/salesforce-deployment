@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Sub Status --></label>
+    <name>Sub_Status__c</name>
+    <picklistValues>
+        <masterLabel>Awaiting Approval</masterLabel>
+        <translation><!-- Awaiting Approval --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Awaiting Customer Response</masterLabel>
+        <translation><!-- Awaiting Customer Response --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Awaiting Documents</masterLabel>
+        <translation><!-- Awaiting Documents --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Awaiting Payment</masterLabel>
+        <translation><!-- Awaiting Payment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Under Review</masterLabel>
+        <translation><!-- Under Review --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

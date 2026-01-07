@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <logo>ChatGPT_Image_Dec_17_2025_09_23_45</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Real Estate Solutions</label>
+    <navType>Standard</navType>
+    <tabs>standard-home</tabs>
+    <tabs>Project__c</tabs>
+    <tabs>Unit__c</tabs>
+    <tabs>Booking__c</tabs>
+    <tabs>Master_Payment_Schedule__c</tabs>
+    <tabs>Car_Parking__c</tabs>
+    <tabs>Complaint__c</tabs>
+    <tabs>Snag__c</tabs>
+    <tabs>Inspection__c</tabs>
+    <tabs>Refund__c</tabs>
+    <tabs>Debit_Note__c</tabs>
+    <tabs>Interest_Line_Item__c</tabs>
+    <tabs>Receipt__c</tabs>
+    <tabs>Receipt_Line_Item__c</tabs>
+    <tabs>Demands__c</tabs>
+    <tabs>Field_Mapping_Configuration__c</tabs>
+    <tabs>Field_Mapping_Detail__c</tabs>
+    <tabs>Field_Mapping_Error_Log__c</tabs>
+    <tabs>Payment_Schedule__c</tabs>
+    <tabs>KYC_Documents__c</tabs>
+    <tabs>Co_Applicants__c</tabs>
+    <tabs>Email_Template_Config__c</tabs>
+    <tabs>Refund_Line_Item__c</tabs>
+    <tabs>Credit_Note__c</tabs>
+    <tabs>Credit_Note_Line_Item__c</tabs>
+    <tabs>Debit_Note_Line_Item__c</tabs>
+    <tabs>Advance_Payment__c</tabs>
+    <tabs>Credit_utilization__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Real_Estate_Solutions_UtilityBar</utilityBar>
+</CustomApplication>

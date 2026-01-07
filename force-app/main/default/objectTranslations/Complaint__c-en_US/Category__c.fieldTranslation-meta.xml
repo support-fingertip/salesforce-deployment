@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Category --></label>
+    <name>Category__c</name>
+    <picklistValues>
+        <masterLabel>Agreement Issue</masterLabel>
+        <translation><!-- Agreement Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Amenity Issue</masterLabel>
+        <translation><!-- Amenity Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Booking Issue</masterLabel>
+        <translation><!-- Booking Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Construction Delay</masterLabel>
+        <translation><!-- Construction Delay --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>General Complaint</masterLabel>
+        <translation><!-- General Complaint --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Invoice Issue</masterLabel>
+        <translation><!-- Invoice Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Maintenance Issue</masterLabel>
+        <translation><!-- Maintenance Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Payment Issue</masterLabel>
+        <translation><!-- Payment Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Possession Delay</masterLabel>
+        <translation><!-- Possession Delay --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Property Issue</masterLabel>
+        <translation><!-- Property Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Staff Issue</masterLabel>
+        <translation><!-- Staff Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Technical Issue</masterLabel>
+        <translation><!-- Technical Issue --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

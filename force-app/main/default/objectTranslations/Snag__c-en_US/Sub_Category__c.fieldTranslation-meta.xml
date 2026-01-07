@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Sub Category --></label>
+    <name>Sub_Category__c</name>
+    <picklistValues>
+        <masterLabel>Color Mismatch</masterLabel>
+        <translation><!-- Color Mismatch --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cracks in walls</masterLabel>
+        <translation><!-- Cracks in walls --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Drainage</masterLabel>
+        <translation><!-- Drainage --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fan</masterLabel>
+        <translation><!-- Fan --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Flush</masterLabel>
+        <translation><!-- Flush --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Leakage</masterLabel>
+        <translation><!-- Leakage --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Light</masterLabel>
+        <translation><!-- Light --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MCB</masterLabel>
+        <translation><!-- MCB --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Peeling</masterLabel>
+        <translation><!-- Peeling --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pipe</masterLabel>
+        <translation><!-- Pipe --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Socket</masterLabel>
+        <translation><!-- Socket --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Stains</masterLabel>
+        <translation><!-- Stains --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Switch</masterLabel>
+        <translation><!-- Switch --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tap</masterLabel>
+        <translation><!-- Tap --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Uneven</masterLabel>
+        <translation><!-- Uneven --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Water Pressure</masterLabel>
+        <translation><!-- Water Pressure --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wiring</masterLabel>
+        <translation><!-- Wiring --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

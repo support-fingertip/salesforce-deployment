@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Residential Status --></label>
+    <name>Residential_Status__c</name>
+    <picklistValues>
+        <masterLabel>INDIAN</masterLabel>
+        <translation><!-- INDIAN --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>NRI</masterLabel>
+        <translation><!-- NRI --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Non-Resident</masterLabel>
+        <translation><!-- Non-Resident --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PIO</masterLabel>
+        <translation><!-- PIO --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Resident</masterLabel>
+        <translation><!-- Resident --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

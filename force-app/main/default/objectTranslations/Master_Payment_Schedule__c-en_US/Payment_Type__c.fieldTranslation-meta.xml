@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Payment Type --></label>
+    <name>Payment_Type__c</name>
+    <picklistValues>
+        <masterLabel>Milestone Based</masterLabel>
+        <translation><!-- Milestone Based --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>On Agreement</masterLabel>
+        <translation><!-- On Agreement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>On Booking</masterLabel>
+        <translation><!-- On Booking --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>On Finishing</masterLabel>
+        <translation><!-- On Finishing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>On First Floor</masterLabel>
+        <translation><!-- On First Floor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>On Foundation</masterLabel>
+        <translation><!-- On Foundation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>On Plastering</masterLabel>
+        <translation><!-- On Plastering --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>On Plinth</masterLabel>
+        <translation><!-- On Plinth --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>On Possession</masterLabel>
+        <translation><!-- On Possession --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>On Registration</masterLabel>
+        <translation><!-- On Registration --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>On Roof Slab</masterLabel>
+        <translation><!-- On Roof Slab --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>On Second Floor</masterLabel>
+        <translation><!-- On Second Floor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Time Based</masterLabel>
+        <translation><!-- Time Based --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

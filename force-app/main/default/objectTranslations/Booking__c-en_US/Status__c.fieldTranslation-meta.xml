@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Status --></label>
+    <name>Status__c</name>
+    <picklistValues>
+        <masterLabel>Agreement Done</masterLabel>
+        <translation><!-- Agreement Done --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Agreement Pending</masterLabel>
+        <translation><!-- Agreement Pending --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Approved, Active</masterLabel>
+        <translation><!-- Approved, Active --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancelled</masterLabel>
+        <translation><!-- Cancelled --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Completed</masterLabel>
+        <translation><!-- Completed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Draft</masterLabel>
+        <translation><!-- Draft --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>On Hold</masterLabel>
+        <translation><!-- On Hold --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pending Verification</masterLabel>
+        <translation><!-- Pending Verification --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Possession Pending</masterLabel>
+        <translation><!-- Possession Pending --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Registered</masterLabel>
+        <translation><!-- Registered --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Registration Pending</masterLabel>
+        <translation><!-- Registration Pending --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Swapped</masterLabel>
+        <translation><!-- Swapped --></translation>
+    </picklistValues>
+</CustomFieldTranslation>
