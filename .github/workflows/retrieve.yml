@@ -1,4 +1,5 @@
 name: Retrieve from Salesforce
+
 on:
   workflow_dispatch:
 
@@ -28,52 +29,9 @@ jobs:
       
       - name: Commit changes to GitHub
         run: |
+          rm -f authfile.txt
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add .
           git diff --quiet && git diff --staged --quiet || git commit -m "Retrieved changes from Salesforce [skip ci]"
           git push
-```
-
----
-
-## **After the Fix:**
-
-1. **Save the changes** (either repository settings OR workflow file)
-
-2. **Try running "Retrieve from Salesforce" again:**
-   - Actions → Retrieve from Salesforce → Run workflow
-
-3. **Expected result:** ✅ Green checkmark!
-
-4. **Check Code tab:** You should see the retrieved metadata
-
----
-
-## **Why This Happened:**
-
-By default, GitHub Actions has **read-only** access to your repository. To push commits back, it needs **write** permissions.
-
-The retrieve workflow needs to:
-- Pull metadata from Salesforce ✅ (works)
-- Commit changes locally ✅ (works)
-- **Push to GitHub** ❌ (needs write permission)
-
----
-
-## **Bonus: Clean Up authfile.txt**
-
-I notice the workflow created `authfile.txt` and committed it. Let's prevent this:
-
-**Add a `.gitignore` file** to your repository:
-
-1. **Click "Add file"** → **"Create new file"**
-
-2. **Filename:** `.gitignore`
-
-3. **Content:**
-```
-   authfile.txt
-   *.txt
-   .sfdx/
-   .sf/
