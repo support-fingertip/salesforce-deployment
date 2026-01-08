@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Capacity --></label>
+    <name>Capacity__c</name>
+    <picklistValues>
+        <masterLabel>Double Car</masterLabel>
+        <translation><!-- Double Car --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Single Car</masterLabel>
+        <translation><!-- Single Car --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Two Wheeler</masterLabel>
+        <translation><!-- Two Wheeler --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

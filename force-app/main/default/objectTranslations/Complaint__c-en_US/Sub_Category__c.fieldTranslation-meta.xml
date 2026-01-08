@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Sub Category --></label>
+    <name>Sub_Category__c</name>
+    <picklistValues>
+        <masterLabel>Booking Confirmation Delay</masterLabel>
+        <translation><!-- Booking Confirmation Delay --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cancellation Request</masterLabel>
+        <translation><!-- Cancellation Request --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Construction Delay</masterLabel>
+        <translation><!-- Construction Delay --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Design Deviation</masterLabel>
+        <translation><!-- Design Deviation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Double Booking</masterLabel>
+        <translation><!-- Double Booking --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Finishing Issue</masterLabel>
+        <translation><!-- Finishing Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Material Quality Issue</masterLabel>
+        <translation><!-- Material Quality Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Modification Request</masterLabel>
+        <translation><!-- Modification Request --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Poor Workmanship</masterLabel>
+        <translation><!-- Poor Workmanship --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Structural Crack</masterLabel>
+        <translation><!-- Structural Crack --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Unit Allocation Issue</masterLabel>
+        <translation><!-- Unit Allocation Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Water Seepage</masterLabel>
+        <translation><!-- Water Seepage --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

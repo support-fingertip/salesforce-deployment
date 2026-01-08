@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Status --></label>
+    <name>Status__c</name>
+    <picklistValues>
+        <masterLabel>Assigned</masterLabel>
+        <translation><!-- Assigned --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cannot Fix</masterLabel>
+        <translation><!-- Cannot Fix --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Closed</masterLabel>
+        <translation><!-- Closed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In Progress</masterLabel>
+        <translation><!-- In Progress --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Open</masterLabel>
+        <translation><!-- Open --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pending Approval</masterLabel>
+        <translation><!-- Pending Approval --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pending Materials</masterLabel>
+        <translation><!-- Pending Materials --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Reopened</masterLabel>
+        <translation><!-- Reopened --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Resolved, Verified</masterLabel>
+        <translation><!-- Resolved, Verified --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

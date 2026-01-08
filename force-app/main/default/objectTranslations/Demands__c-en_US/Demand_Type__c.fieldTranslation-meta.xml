@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Demand Type --></label>
+    <name>Demand_Type__c</name>
+    <picklistValues>
+        <masterLabel>Ad-hoc Demand</masterLabel>
+        <translation><!-- Ad-hoc Demand --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bulk Demand</masterLabel>
+        <translation><!-- Bulk Demand --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Individual Demand</masterLabel>
+        <translation><!-- Individual Demand --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Reminder Demand</masterLabel>
+        <translation><!-- Reminder Demand --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

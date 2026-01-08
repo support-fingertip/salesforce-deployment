@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Parking Type --></label>
+    <name>Parking_Type__c</name>
+    <picklistValues>
+        <masterLabel>Basement</masterLabel>
+        <translation><!-- Basement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Covered</masterLabel>
+        <translation><!-- Covered --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mechanical</masterLabel>
+        <translation><!-- Mechanical --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Open</masterLabel>
+        <translation><!-- Open --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Reserved</masterLabel>
+        <translation><!-- Reserved --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Stilt</masterLabel>
+        <translation><!-- Stilt --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Visitor</masterLabel>
+        <translation><!-- Visitor --></translation>
+    </picklistValues>
+</CustomFieldTranslation>
