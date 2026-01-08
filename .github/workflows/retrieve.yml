@@ -1,19 +1,25 @@
 name: Retrieve from Salesforce
 
-on:
-  workflow_dispatch:  # Keep manual trigger
-  schedule:
-    - cron: '0 2 * * 1-5'
+on: 
+  workflow_dispatch:   # Keep manual trigger
+  schedule: 
+    - cron:  '0 2 * * 1-5'
 
-jobs:
-  retrieve:
-    runs-on: ubuntu-latest
+jobs: 
+  retrieve: 
+    runs-on:  ubuntu-latest
     permissions:
       contents: write
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses:  actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch full history for proper merging
+      
+      - name: Pull latest changes
+        run: |
+          git pull origin ${{ github.ref_name }} --rebase
       
       - name: Install Salesforce CLI
         run: |
@@ -22,18 +28,29 @@ jobs:
       
       - name: Authenticate to Salesforce
         run: |
-          echo "${{ secrets.SALESFORCE_AUTH_URL }}" > authfile.txt
+          echo "${{ secrets. SALESFORCE_AUTH_URL }}" > authfile.txt
           sf org login sfdx-url --sfdx-url-file authfile.txt --alias deployment-org --set-default
       
       - name: Retrieve from Salesforce
         run: |
           sf project retrieve start --manifest manifest/package.xml --target-org deployment-org
       
-      - name: Commit changes to GitHub
+      - name:  Commit and push changes
         run: |
-          rm -f authfile.txt
+          rm -f authfile. txt
           git config user.name "GitHub Actions Bot"
-          git config user.email "actions@github.com"
+          git config user.email "actions@github. com"
           git add .
-          git diff --quiet && git diff --staged --quiet || git commit -m "Scheduled retrieval from Salesforce [skip ci]"
-          git push
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          
+          git commit -m "Scheduled retrieval from Salesforce [skip ci]"
+          
+          # Pull latest changes and rebase before pushing to avoid conflicts
+          git pull origin ${{ github. ref_name }} --rebase
+          
+          git push origin ${{ github.ref_name }}
