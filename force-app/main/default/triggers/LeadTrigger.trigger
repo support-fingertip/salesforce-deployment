@@ -9,5 +9,6 @@ trigger LeadTrigger on Lead__c (before insert) {
 //testing my gitbug push action
 //another retriveev action
 ////hello
+/hello twice
     }
 }
