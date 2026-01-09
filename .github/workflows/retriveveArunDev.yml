@@ -1,18 +1,7 @@
-name: Retrieve from Salesforce to Branch
+name: Retrieve from Salesforce
 
 on: 
   workflow_dispatch:
-    inputs:
-      target_branch:
-        description: 'Branch to retrieve to (will create if not exists)'
-        required: true
-        default: 'salesforce-retrieve'
-        type: string
-      create_pr:
-        description: 'Create Pull Request after retrieval?'
-        required: true
-        default: true
-        type: boolean
 
 jobs: 
   retrieve: 
@@ -25,23 +14,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
+          ref: ${{ github.ref_name }}
           fetch-depth: 0
-      
-      - name: Setup target branch
-        run: |
-          BRANCH_NAME="${{ github.event.inputs.target_branch }}"
-          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
-          
-          # Check if branch exists remotely
-          if git ls-remote --heads origin "$BRANCH_NAME" | grep -q "$BRANCH_NAME"; then
-            echo "Branch $BRANCH_NAME exists, checking out..."
-            git fetch origin "$BRANCH_NAME"
-            git checkout "$BRANCH_NAME"
-            git pull origin "$BRANCH_NAME"
-          else
-            echo "Branch $BRANCH_NAME doesn't exist, creating..."
-            git checkout -b "$BRANCH_NAME"
-          fi
       
       - name: Install Salesforce CLI
         run: |
@@ -64,129 +38,20 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           git add .
-          
           if git diff --staged --quiet; then
-            echo "No changes to commit"
             echo "has_changes=false" >> $GITHUB_OUTPUT
             exit 0
           fi
-          
           echo "has_changes=true" >> $GITHUB_OUTPUT
-          
-          TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S UTC')
-          git commit -m "Retrieved metadata from Salesforce on $TIMESTAMP
-
-This automated retrieval includes all metadata changes from Salesforce.
-Please review carefully before merging to main branch.
-
-[skip ci]"
-          
-          git push origin "$BRANCH_NAME"
+          git commit -m "Retrieved metadata from Salesforce [skip ci]"
+          git push origin ${{ github.ref_name }}
       
-      - name: Check if PR already exists
-        if: steps.commit.outputs.has_changes == 'true' && github.event.inputs.create_pr == 'true'
-        id: check-pr
+      - name: Create Pull Request
+        if: steps.commit.outputs.has_changes == 'true' && github.ref_name != 'main'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          PR_EXISTS=$(gh pr list --head "$BRANCH_NAME" --base main --json number --jq length)
-          
-          if [ "$PR_EXISTS" -gt 0 ]; then
-            echo "pr_exists=true" >> $GITHUB_OUTPUT
-            PR_NUMBER=$(gh pr list --head "$BRANCH_NAME" --base main --json number --jq '.[0].number')
-            echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
-            echo "PR already exists: #$PR_NUMBER"
-          else
-            echo "pr_exists=false" >> $GITHUB_OUTPUT
-            echo "No existing PR found"
+          PR_EXISTS=$(gh pr list --head "${{ github.ref_name }}" --base main --json number --jq length)
+          if [ "$PR_EXISTS" -eq 0 ]; then
+            gh pr create --base main --head "${{ github.ref_name }}" --title "Salesforce Retrieval - ${{ github.ref_name }}" --body "Automated metadata retrieval from Salesforce" --label "salesforce,automated"
           fi
-      
-      - name: Update existing PR
-        if: steps.commit.outputs.has_changes == 'true' && github.event.inputs.create_pr == 'true' && steps.check-pr.outputs.pr_exists == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          PR_NUMBER="${{ steps.check-pr.outputs.pr_number }}"
-          TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
-          
-          gh pr comment "$PR_NUMBER" --body "🔄 **Updated with new retrieval**
-
-**Retrieved on:** $TIMESTAMP
-**Triggered by:** @${{ github.actor }}
-
-New changes have been added to this PR. Please review the latest commits."
-          
-          echo "✅ Updated existing PR #$PR_NUMBER with new changes"
-      
-      - name: Create new Pull Request
-        if: steps.commit.outputs.has_changes == 'true' && github.event.inputs.create_pr == 'true' && steps.check-pr.outputs.pr_exists == 'false'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
-          
-          PR_BODY=$(cat <<EOF
-          ## 🔄 Automated Salesforce Metadata Retrieval
-          
-          **Retrieved on:** $TIMESTAMP
-          **Triggered by:** @${{ github.actor }}
-          **Branch:** \`$BRANCH_NAME\`
-          
-          ---
-          
-          ### 📋 What's in this PR?
-          This PR contains metadata retrieved from your Salesforce org. Please review the changes carefully before merging.
-          
-          ### 📊 Quick Stats
-          - **Apex Classes:** $(find force-app/main/default/classes -name "*.cls" 2>/dev/null | wc -l || echo 0)
-          - **Apex Triggers:** $(find force-app/main/default/triggers -name "*.trigger" 2>/dev/null | wc -l || echo 0)
-          - **Flows:** $(find force-app/main/default/flows -name "*.flow-meta.xml" 2>/dev/null | wc -l || echo 0)
-          - **Custom Objects:** $(find force-app/main/default/objects -type d -mindepth 1 -maxdepth 1 2>/dev/null | wc -l || echo 0)
-          
-          ### ✅ Review Checklist
-          - [ ] All changes look expected
-          - [ ] No sensitive data included (passwords, API keys, etc.)
-          - [ ] No accidental deletions
-          - [ ] Ready to deploy to main branch
-          
-          ### ⚠️ Important Notes
-          - Merging this PR will trigger automatic deployment to Salesforce sandbox
-          - If you see unexpected changes, investigate in Salesforce before merging
-          - You can safely close this PR if changes are not needed
-          
-          ---
-          
-          ### 🔍 How to Review
-          1. Go to the **"Files changed"** tab above
-          2. Review each modified file
-          3. Check for any unexpected changes
-          4. Approve or request changes
-          
-          ---
-          
-          *This is an automated pull request created by GitHub Actions*
-          EOF
-          )
-          
-          gh pr create \
-            --base main \
-            --head "$BRANCH_NAME" \
-            --title "🔄 Salesforce Retrieval - $BRANCH_NAME" \
-            --body "$PR_BODY" \
-            --label "salesforce,automated,metadata-retrieval" \
-            --assignee "${{ github.actor }}"
-          
-          echo "✅ Pull Request created successfully!"
-      
-      - name: No changes notification
-        if: steps.commit.outputs.has_changes == 'false'
-        run: |
-          echo "✅ No changes detected in Salesforce"
-          echo "No Pull Request created"
-      
-      - name: Summary
-        if: always()
-        run: |
-          echo "### Workflow Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Branch
