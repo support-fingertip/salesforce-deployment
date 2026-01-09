@@ -47,12 +47,13 @@ jobs:
           git push origin ${{ github.ref_name }}
       
       - name: Create Pull Request
-        if: steps.commit.outputs.has_changes == 'true'
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref_name }}
-          base: main
-          title: "Salesforce Retrieval - ${{ github.ref_name }}"
-          body: "Automated metadata retrieval from Salesforce"
-          labels: salesforce,automated
+        if: steps.commit.outputs.has_changes == 'true' && github.ref != 'refs/heads/main'
+        run: |
+          gh pr create \
+            --base main \
+            --head ${{ github.ref_name }} \
+            --title "Salesforce Retrieval - ${{ github.ref_name }}" \
+            --body "Automated metadata retrieval from Salesforce" \
+            --label salesforce
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
