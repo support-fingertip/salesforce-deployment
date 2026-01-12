@@ -19,15 +19,20 @@ jobs:
           npm install --global @salesforce/cli
           sf --version
       
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
       - name: Install sfdx-git-delta
         run: |
-          echo y | npm install --global sfdx-git-delta
+          npm install sfdx-git-delta
           echo "Installation complete"
       
       - name: Generate delta packages
         run: |
           # Compare current commit with previous commit
-          npx sfdx-git-delta --to HEAD --from HEAD~1 --output delta --generate-delta
+          node node_modules/sfdx-git-delta/lib/cli.js --to HEAD --from HEAD~1 --output delta --generate-delta
       
       - name: Authenticate to Salesforce
         run: |
