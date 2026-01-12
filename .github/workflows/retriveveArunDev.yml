@@ -1,25 +1,28 @@
-name: Retrieve from Salesforce
+name: Retrieve from Salesforce and Create PR
 
-on: 
-  workflow_dispatch:   # Keep manual trigger
-  schedule: 
-    - cron:  '0 2 * * 1-5'
+on:  
+  workflow_dispatch: 
+    inputs:
+      branch:
+        description: 'Branch to retrieve to (leave empty for current branch)'
+        required: false
+        type: string
 
-jobs: 
-  retrieve: 
-    runs-on:  ubuntu-latest
+jobs:  
+  retrieve:  
+    runs-on: ubuntu-latest
+    # Skip if running on main branch
+    if: github.ref_name != 'main'
     permissions:
-      contents: write
+      contents:  write
+      pull-requests: write
     
     steps:
       - name: Checkout code
-        uses:  actions/checkout@v3
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Fetch full history for proper merging
-      
-      - name: Pull latest changes
-        run: |
-          git pull origin ${{ github.ref_name }} --rebase
+          ref: ${{ inputs.branch || github. ref_name }}
+          fetch-depth:  0
       
       - name: Install Salesforce CLI
         run: |
@@ -29,28 +32,58 @@ jobs:
       - name: Authenticate to Salesforce
         run: |
           echo "${{ secrets. SALESFORCE_AUTH_URL }}" > authfile.txt
-          sf org login sfdx-url --sfdx-url-file authfile.txt --alias deployment-org --set-default
+          sf org login sfdx-url --sfdx-url-file authfile. txt --alias deployment-org --set-default
       
       - name: Retrieve from Salesforce
         run: |
-          sf project retrieve start --manifest manifest/package.xml --target-org deployment-org
+          sf project retrieve start --manifest manifest/package. xml --target-org deployment-org
       
       - name:  Commit and push changes
+        id: commit
         run: |
-          rm -f authfile. txt
-          git config user.name "GitHub Actions Bot"
-          git config user.email "actions@github. com"
-          git add .
-          
-          # Check if there are changes to commit
+          rm -f authfile.txt
+          git config user. name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add . 
           if git diff --staged --quiet; then
-            echo "No changes to commit"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected"
             exit 0
           fi
-          
-          git commit -m "Scheduled retrieval from Salesforce [skip ci]"
-          
-          # Pull latest changes and rebase before pushing to avoid conflicts
-          git pull origin ${{ github. ref_name }} --rebase
-          
-          git push origin ${{ github.ref_name }}
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+          git commit -m "Retrieved metadata from Salesforce [skip ci]"
+          git push origin ${{ inputs.branch || github. ref_name }}
+      
+      - name: Check for existing PR
+        id: check_pr
+        if: steps.commit. outputs.has_changes == 'true'
+        run: |
+          BRANCH_NAME="${{ inputs.branch || github.ref_name }}"
+          EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --base main --state open --json number --jq '.[0].number')
+          if [ -n "$EXISTING_PR" ]; then
+            echo "existing_pr=true" >> $GITHUB_OUTPUT
+            echo "PR #$EXISTING_PR already exists for branch $BRANCH_NAME"
+          else
+            echo "existing_pr=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name:  Create Pull Request
+        if: steps.commit.outputs.has_changes == 'true' && steps.check_pr. outputs.existing_pr == 'false'
+        run: |
+          BRANCH_NAME="${{ inputs.branch || github.ref_name }}"
+          gh pr create \
+            --base main \
+            --head "$BRANCH_NAME" \
+            --title "Salesforce Retrieval - $BRANCH_NAME" \
+            --body "## Automated Metadata Retrieval
+            
+            **Branch:** $BRANCH_NAME
+            **Triggered by:** ${{ github.actor }}
+            **Timestamp:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+            
+            This PR contains metadata retrieved from Salesforce." \
+            --label salesforce
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
