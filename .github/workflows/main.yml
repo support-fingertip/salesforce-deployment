@@ -3,58 +3,24 @@ on:
   push:
     branches:
       - main
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Fetch all history for delta comparison
-      
-      - name: Install Salesforce CLI
-        run: |
-          npm install --global @salesforce/cli
-          sf --version
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      
-      - name: Install sfdx-git-delta
-        run: |
-          npm install sfdx-git-delta
-          echo "Installation complete"
-      
-      - name: Generate delta packages
-        run: |
-          # Compare current commit with previous commit
-          node node_modules/sfdx-git-delta/lib/cli.js --to HEAD --from HEAD~1 --output delta --generate-delta
-      
-      - name: Authenticate to Salesforce
-        run: |
-          echo "${{ secrets.SALESFORCE_AUTH_URL }}" > authfile.txt
-          sf org login sfdx-url --sfdx-url-file authfile.txt --alias deployment-org --set-default
-      
-      - name: Deploy delta to Salesforce
-        run: |
-          # Check if there are any changes to deploy
-          if [ -f delta/package/package.xml ]; then
-            echo "Deploying changes..."
-            sf project deploy start --manifest delta/package/package.xml --target-org deployment-org --wait 30
-          else
-            echo "No changes to deploy"
-          fi
-      
-      - name: Delete components if needed
-        run: |
-          # Check if there are components to delete
-          if [ -f delta/destructiveChanges/destructiveChanges.xml ]; then
-            echo "Deploying destructive changes..."
-            sf project deploy start --manifest delta/destructiveChanges/destructiveChanges.xml --post-destructive-changes delta/destructiveChanges/destructiveChanges.xml --target-org deployment-org --wait 30
-          else
-            echo "No components to delete"
-          fi
+
+name: Install Salesforce CLI
+run: |
+  npm install --global @salesforce/cli
+  sf --version
+
+name: Authenticate to Salesforce
+run: |
+  echo "${{ secrets.SALESFORCE_AUTH_URL }}" > authfile.txt
+  sf org login sfdx-url --sfdx-url-file authfile.txt --alias deployment-org --set-default
+
+name: Deploy to Salesforce
+run: |
+  sf project deploy start --source-dir force-app --target-org deployment-org --wait 30
