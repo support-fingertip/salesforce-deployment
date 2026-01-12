@@ -21,13 +21,13 @@ jobs:
       
       - name: Install sfdx-git-delta
         run: |
-          npm install --global sfdx-git-delta
-          sgd --version
+          echo y | npm install --global sfdx-git-delta
+          echo "Installation complete"
       
       - name: Generate delta packages
         run: |
           # Compare current commit with previous commit
-          sgd --to HEAD --from HEAD~1 --output delta --generate-delta
+          npx sfdx-git-delta --to HEAD --from HEAD~1 --output delta --generate-delta
       
       - name: Authenticate to Salesforce
         run: |
