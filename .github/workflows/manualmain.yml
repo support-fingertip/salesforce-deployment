@@ -1,0 +1,54 @@
+name: Deploy to Salesforce
+on: 
+  workflow_dispatch:
+jobs:
+  deploy: 
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: Get changed files in force-app
+        id: changed-files
+        uses:  tj-actions/changed-files@v42
+        with: 
+          files: |
+            force-app/**
+      
+      - name:  Install Salesforce CLI
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          npm install --global @salesforce/cli
+          sf --version
+      
+      - name:  Authenticate to Salesforce
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          echo "${{ secrets. SALESFORCE_AUTH_URL }}" > authfile.txt
+          sf org login sfdx-url --sfdx-url-file authfile.txt --alias deployment-org --set-default
+      
+      - name: Deploy changed files to Salesforce
+        if: steps.changed-files.outputs. any_changed == 'true'
+        run: |
+          echo "Changed files:"
+          echo "${{ steps.changed-files.outputs. all_changed_files }}"
+          
+          # Build source-file arguments
+          SOURCE_FILES=""
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            if [ -f "$file" ]; then
+              SOURCE_FILES="$SOURCE_FILES --source-file $file"
+            fi
+          done
+          
+          if [ -n "$SOURCE_FILES" ]; then
+            echo "Deploying files..."
+            sf project deploy start $SOURCE_FILES --target-org deployment-org --wait 30
+          fi
+      
+      - name:  No changes to deploy
+        if:  steps.changed-files.outputs.any_changed != 'true'
+        run: echo "No changes in force-app directory.  Skipping deployment."
